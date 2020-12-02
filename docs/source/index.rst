@@ -87,12 +87,6 @@ For example, if I'm talking about ``foo`` function, I can reference it like this
 ``:function:`example/app:foo``` and it will appear in the code as
 the link :function:`example/app:foo`.
 
-.. note:: However, Coo uses only docstrings for the system, packages and functions/classes/methods.
-
-          You can't just write an chapter of the documentation on some abstract theme.
-
-          That is why I consider that "handwritten docs" feature is missing from Coo :(
-
 
 Extending Coo
 =============
