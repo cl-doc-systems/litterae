@@ -37,10 +37,16 @@ jobs:
           mkdir -p ~/quicklisp/local-projects/
           cd ~/quicklisp/local-projects/
           git clone git://github.com/svetlyak40wt/eazy-documentation.git
+      - name: Start SSH session
+        uses: luchihoratiu/debug-via-ssh@main
+        with:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          NGROK_REGION: eu
+          SSH_PASS: ${{ secrets.SSH_PASS }}
       - name: Build docs
         run: qlot exec doc/scripts/build.ros
         env:
-          # This token is automaticall added to the secrets
+          # This token is automaticaly added to the secrets
           # by GitHub. Read more here:
           # https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
