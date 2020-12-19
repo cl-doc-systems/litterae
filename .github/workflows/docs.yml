@@ -29,14 +29,13 @@ jobs:
       - name: Install Qlot
         run: ros install qlot
       - name: Install Dependencies
-        run: qlot install
-      - name: Install Eazy Documentation forl
+        run: |
+          sudo apt-get install pandoc texi2html
+          qlot install
+      - name: Install Eazy Documentation fork
         # Because my patches aren't in the upstream yet:
         # https://github.com/guicho271828/eazy-documentation/pull/2
-        run: |
-          mkdir -p ~/quicklisp/local-projects/
-          cd ~/quicklisp/local-projects/
-          git clone git://github.com/svetlyak40wt/eazy-documentation.git
+        run: git clone git://github.com/svetlyak40wt/eazy-documentation.git .qlot/local-projects/eazy-documentation/
       - name: Start SSH session
         uses: luchihoratiu/debug-via-ssh@main
         with:
