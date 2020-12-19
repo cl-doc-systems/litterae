@@ -36,12 +36,6 @@ jobs:
         # Because my patches aren't in the upstream yet:
         # https://github.com/guicho271828/eazy-documentation/pull/2
         run: git clone git://github.com/svetlyak40wt/eazy-documentation.git .qlot/local-projects/eazy-documentation/
-      - name: Start SSH session
-        uses: luchihoratiu/debug-via-ssh@main
-        with:
-          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-          NGROK_REGION: eu
-          SSH_PASS: ${{ secrets.SSH_PASS }}
       - name: Build docs
         run: qlot exec doc/scripts/build.ros
         env:
