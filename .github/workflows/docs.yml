@@ -30,8 +30,15 @@ jobs:
         run: ros install qlot
       - name: Install Dependencies
         run: qlot install
+      - name: Install Eazy Documentation forl
+        # Because my patches aren't in the upstream yet:
+        # https://github.com/guicho271828/eazy-documentation/pull/2
+        run: |
+          mkdir -p ~/quicklisp/local-projects/
+          cd ~/quicklisp/local-projects/
+          git clone git://github.com/svetlyak40wt/eazy-documentation.git
       - name: Build docs
-        run: qlot exec docs/scripts/build.ros
+        run: qlot exec doc/scripts/build.ros
         env:
           # This token is automaticall added to the secrets
           # by GitHub. Read more here:
