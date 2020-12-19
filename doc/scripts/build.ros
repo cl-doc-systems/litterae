@@ -55,27 +55,24 @@ behaviour could be overriden by keyword argument ``:raise t``."
 
 
 (defun build-docs ()
-  (log:info "Building documentation in ./docs/")
+  (log:info "Building documentation in ./doc/")
 
-  ;; To make pages for symbols from docutils
-  ;; we'll generate docs for it first
-  (coo:document-system "docutils" :base-path "docs/build/")
-  ;; and then for our example, to overwrite the index.html
-  (coo:document-system "example" :base-path "docs/build/")
+  (eazy-documentation:generate-html "example" "doc/build/index.html")
+  (eazy-documentation:generate-html "manuals/" "doc/build/manuals.html")
   
-  (uiop:with-output-file (s "docs/build/.nojekyll" :if-exists :overwrite)
+  (uiop:with-output-file (s "doc/build/.nojekyll" :if-exists :overwrite)
     (declare (ignorable s))))
 
 
 (defun gh-pages-repository-initialized-p ()
   "Checks if repository for documentation already initialized"
-  (uiop:directory-exists-p "docs/build/.git"))
+  (uiop:directory-exists-p "doc/build/.git"))
 
 
 (defun git (&rest commands)
   "Calls git command in gh-pages repository."
   
-  (let ((directory "docs/build/"))
+  (let ((directory "doc/build/"))
     (uiop:with-current-directory (directory)
       (let ((command (apply #'concatenate 'string
                             "git "

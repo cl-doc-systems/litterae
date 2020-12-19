@@ -38,6 +38,11 @@ Pros
 * ``Eazy documentation`` generates links to the source of every section. This way
   typos or small errors can be easily fixed on the GitHub. I really like this feature!
 * It generates a single HTML file which can be easily searched through in the browser.
+* ``Eazy documentation`` includes a command line utility and which be called to build
+  documentation for any CL system loadable via ASDF.
+* It can be used to build documentation for non Lisp projects. Just point it to any
+  directory with documentation files. For example, take a look at [this manual](manuals.html).
+  However, this feature is only available in my fork and not merged to upstream yet.
 
 Cons
 ----
