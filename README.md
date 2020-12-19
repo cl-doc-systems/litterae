@@ -23,3 +23,11 @@ export CL_SOURCE_REGISTRY=`pwd`/
 
 ros install guicho271828/eazy-documentation
 ```
+
+## Ubuntu Installation
+
+For ubuntu, replace `brew` commands with:
+
+```
+sudo apt-get install pandoc texi2html
+```

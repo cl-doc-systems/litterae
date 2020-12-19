@@ -57,8 +57,11 @@ behaviour could be overriden by keyword argument ``:raise t``."
 (defun build-docs ()
   (log:info "Building documentation in ./doc/")
 
+  ;; For system, remote-url will be taken from the ASD file:
   (eazy-documentation:generate-html "example" "doc/build/index.html")
-  (eazy-documentation:generate-html "manuals/" "doc/build/manuals.html")
+  ;; For directory we have to provide remote-root manually
+  (eazy-documentation:generate-html "manuals/" "doc/build/manuals.html"
+                                    :remote-root "https://github.com/cl-doc-systems/eazy-documentation/blob/master")
   
   (uiop:with-output-file (s "doc/build/.nojekyll" :if-exists :overwrite)
     (declare (ignorable s))))
