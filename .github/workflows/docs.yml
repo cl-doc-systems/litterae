@@ -22,6 +22,8 @@ jobs:
         run: |
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
           echo /home/runner/.roswell/bin >> $GITHUB_PATH
+      - name: Install newer ASDF
+        run: ros install asdf/3.3.4
       - name: Check CL Version
         run: |
           ros install 40ants/cl-info
