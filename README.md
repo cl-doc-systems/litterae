@@ -22,6 +22,11 @@ export PATH="/usr/local/opt/texinfo/bin:$PATH"
 export CL_SOURCE_REGISTRY=`pwd`/
 
 ros install guicho271828/eazy-documentation
+
+# Eazy Documentation is able to process
+# package inferred systems only on ASDF >= 3.3.4
+# That is why we need to upgrade it.
+ros install asdf
 ```
 
 ## Ubuntu Installation
