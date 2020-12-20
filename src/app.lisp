@@ -1,6 +1,7 @@
 (defpackage #:example/app
   (:use #:cl)
   (:import-from #:example/utils)
+  (:import-from #:example/class)
   (:documentation "This is docstring for the package.
 
                    The package contains a function which does it's job by
