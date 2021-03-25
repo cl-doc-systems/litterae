@@ -13,17 +13,17 @@
 
 
 (defmacro defrule (name &body body)
-  "This is a fake macro just to demonstrate how eazy-documentation
-   will extract docstrings from it's forms."
+  "This is a fake macro just to see if documentation system will be able
+   to extract docstrings for NUMBER-ONE."
   `(defparameter ,name '(,@(rest body))))
 
 
 (defrule number-one
     "This is a rule's docstring. Nothing special, just a text.
 
-After macro-expansion it will be just:
+     After macro-expansion it will be just:
 
-    (defparameter number-one '((a b c)))
+         (defparameter number-one '((a b c)))
 
 "
   (a b c))
@@ -32,7 +32,7 @@ After macro-expansion it will be just:
 (defun foo (first &key (other 100500))
   "This is example function.
 
-   Internally it calls [DO-THE-JOB](#EXAMPLE/UTILS:DO-THE-JOB)
+   Internally it calls [DO-THE-JOB](#example-utils:do-the-job-2)
    to do the real job.
 
    Note, I'm using Markdown in this doctring. This is default

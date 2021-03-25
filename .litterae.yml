@@ -1,0 +1,7 @@
+docstrings-as-markdown: true
+
+# Seems this does not work,
+# because I didn't find in the litterae
+# code which uses this setting.
+styles:
+  highlight-color: emacs

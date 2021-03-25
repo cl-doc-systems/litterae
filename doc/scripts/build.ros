@@ -6,7 +6,7 @@ exec ros -Q -- $0 "$@"
 (progn ;;init forms
   (ros:ensure-asdf)
   #+quicklisp
-  (ql:quickload '(log4cl eazy-documentation)
+  (ql:quickload '(log4cl litterae)
                 :silent t))
 
 (defpackage :script.build-docs
@@ -54,14 +54,33 @@ behaviour could be overriden by keyword argument ``:raise t``."
     (values stdout stderr code)))
 
 
+(defun litterae::read-markdown (filepath)
+  "Reads and parses a markdown file located in `filepath'."
+  (with-output-to-string (out)
+    (let ((3bmd-code-blocks:*code-blocks* t)
+          ;; (3bmd-code-blocks:*renderer* :pygments)
+          )
+
+      (3bmd:parse-and-print-to-stream filepath out))))
+
+
+(defun copy-litterae-assets (to-path)
+  (loop for file in (directory (asdf:system-relative-pathname :litterae
+                                                              #P"assets/*.*"))
+        for target = (uiop:merge-pathnames* (file-namestring file)
+                                            to-path)
+        do (log:info "Copying ~A to ~A"
+                     file target)
+           (ensure-directories-exist target)
+           (uiop:copy-file file target)))
+
+
 (defun build-docs ()
   (log:info "Building documentation in ./doc/")
 
-  ;; For system, remote-url will be taken from the ASD file:
-  (eazy-documentation:generate-html "example" "doc/build/index.html")
-  ;; For directory we have to provide remote-root manually
-  (eazy-documentation:generate-html "manuals/" "doc/build/manuals.html"
-                                    :remote-root "https://github.com/cl-doc-systems/eazy-documentation/blob/master")
+  (copy-litterae-assets "doc/build/")
+  (litterae:generate :example
+                     :path "doc/build/")
   
   (uiop:with-output-file (s "doc/build/.nojekyll" :if-exists :overwrite)
     (declare (ignorable s))))

@@ -23,7 +23,7 @@
    I've used [Markdown](https://www.markdownguide.org/basic-syntax/)
    format to make the word \"concatenates\" bold.
 
-   Also, we can reference some parts of the documentation.
-   Read more about cross referencing in the
-   [Handwritten documentation](#handwritten-documentation) chapter."
+   Sandly, we can't reference parts of the documentation from README.
+   I'd like to make a link to \"Handwritten documentation\" chapter
+   but there is no HTML anchor there."
   (concat first second))
