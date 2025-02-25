@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>example | Documentation</title>
+    <meta name="description" content="This description will be used only if long-description is missing">
+    
+    <meta name="og:title" property="og:title" content="example | Documentation">
+    <meta property="og:type" content="website">
+    <meta name="og:description" content="This description will be used only if long-description is missing">
+    
+    <link href="https://github.com/cl-doc-systems/litterae" rel="canonical">
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic,900,900italic">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./highlight-theme-lovelace.css">
+    </head>
+  <body>
+    <div class="top-menu">
+    <a href="#">example</a>
+    <input type="text" placeholder="Search...">
+  </div>
+    <div>
+  <header class="hero">
+  <div class="hero-content">
+  <h1>EXAMPLE</h1>
+  <p>This description will be used only if long-description is missing</p>
+  </div>
+  </header>
+  <aside>
+  <nav class="nav-table-of-contents">
+  <h5>Table of Contents ⟶</h5>
+  <ul>
+  <li><a href="#">example/utils</a><ul><li><a href="#">Functions</a><ul><li><a href="#example-utils::concat-1">concat</a></li>
+<li><a href="#example-utils:do-the-job-2">do-the-job</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#">example/class</a><ul><li><a href="#">Classes</a><ul><li><a href="#example-class:admin-3">admin</a></li>
+<li><a href="#example-class:user-4">user</a></li>
+</ul></li>
+<li><a href="#">Generic-Function-Node</a><ul><li><a href="#example-class::is-admin-5">is-admin</a></li>
+</ul></li>
+<li><a href="#">Methods</a><ul><li><a href="#example-class::is-admin-6">is-admin</a></li>
+<li><a href="#example-class::is-admin-7">is-admin</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#">example/app</a><ul><li><a href="#">Macros</a><ul><li><a href="#example-app:defrule-8">defrule</a></li>
+</ul></li>
+<li><a href="#">Variables</a><ul><li><a href="#example-app:number-one-9">number-one</a></li>
+</ul></li>
+<li><a href="#">Functions</a><ul><li><a href="#example-app:foo-10">foo</a></li>
+</ul></li>
+</ul></li>
+
+  </ul>
+  </nav>
+  </aside>
+
+  <main>
+  <div class="main-content">
+  <div class="readme">
+  <h1>Litterae</h1>
+
+<p>This is an example project of <a href="https://github.com/stefandevai/litterae" >Litterae</a> Common Lisp documentation system.</p>
+
+<p>This repository is part of the <a href="https://github.com/cl-doc-systems">https://github.com/cl-doc-systems</a> organization, created to compare different Common Lisp documentation systems.</p>
+
+<p>The goal is make it easier for CL software developers to choose proper documentation system and to improve docs in their software!</p>
+
+<p>Resulting documentation can be viewed here:</p>
+
+<p><a href="https://cl-doc-systems.github.io/litterae/">https://cl-doc-systems.github.io/litterae/</a></p>
+
+<h2>About this example</h2>
+
+<p>This is a small library which includes a few functions with docstrings and a documentation
+for the system and all included packages.</p>
+
+<p>The purpose is to demonstrate core features of the
+<a href="https://github.com/stefandevai/litterae" >Litterae</a> library.</p>
+
+<p>The repository can be used as a template for new libraries if you've choosen <code>Litterae</code>
+for documenting your library.</p>
+
+<p>Let's review features, provided by <code>Litterae</code>.</p>
+
+<h2>Pros &amp; Cons</h2>
+
+<h3>Pros</h3>
+
+<ul>
+<li><code>Litterae</code> is pretty forward and uses README.md as the source.</li>
+<li>Generated documentation looks really nice.</li>
+<li>It autogenerates API reference.</li>
+</ul>
+
+<h2>Cons</h2>
+
+<ul>
+<li>It is not suited for large projects with lengthy documentation.</li>
+<li>You have to copy CSS and other assets manually from LItterae's <code>assets/</code> folder.
+  Right now page's style is not so cool like it was when I've added <code>style.css</code>
+  to the Teddy's documentation.</li>
+<li>There is no cross-referencing is semi-automatic - you have to write links manually.</li>
+<li>And there is not autocheck if all links are correct.</li>
+<li>You have to install <code>Pygments</code> Python library.</li>
+<li>Table of contents does not show sections from the README file, only API reference.</li>
+<li>It is impossible to reference HTML chapters because there is no HTML anchors for them.</li>
+</ul>
+
+<h2>Handwritten documentation</h2>
+
+<p>I think the ability to write a large pieces of documentation which aren't bound to
+a function, class or module is an important feature. This way you can tell the user
+about some toplevel abstractions and give a bird eye view on the library or system.</p>
+
+<p>For example, handwritten parts of the documentation can provide some code snippets
+to demonstrate the ways, how to use the library:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">loop</span></i> repeat 42
+      collect <span class="paren2">(<span class="code">foo <span class="string">"bar"</span> 100500</span>)</span></span>)</span></span></code></pre>
+
+<p>And when you are talking about some function or class, you can reference it.
+For example, if I'm talking about <code>foo</code> function.</p>
+
+<p><code>Litterae</code> does not provides an eazy way to refer symbols. It would be
+nice to have <code>EXAMPLE/APP:FOO</code> autolinked, but this does not work.</p>
+
+<p>But the system generates HTML ids for symbols and you can refer them manually.
+For example we can reference <code>FOO</code> like this <code>[`FOO`](#example-app:foo-10)</code>
+and it will appear in the code as the link <a href="#example-app:foo-10" ><code>FOO</code></a>.
+This is very inconvenient :(</p>
+
+  </div>
+  
+  <div class="api-docs">
+  <h1>API Documentation</h1>
+  <h3>Package: EXAMPLE/UTILS</h3>
+<h4>Functions</h4>
+<div>
+  <h5 id="example-utils::concat-1">
+  concat <span class="lambda-parameters"><span class="parenthesis">(</span> first second <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  <p>This function is not exported and should not be showed in the API reference.</p>
+
+  </p>
+  </div>
+<div>
+  <h5 id="example-utils:do-the-job-2">
+  do-the-job <span class="lambda-parameters"><span class="parenthesis">(</span> first second <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  <p>The function does the job.</p>
+
+<p>It <strong>concatenates</strong> first and second arguments
+   calling internal function concat.</p>
+
+<p>On this multiline we'll check how does documentation
+   system processes docstrings.</p>
+
+<p>By the way, pay attention at the second paragraph where
+   I've used <a href="https://www.markdownguide.org/basic-syntax/" >Markdown</a>
+   format to make the word &quot;concatenates&quot; bold.</p>
+
+<p>Sandly, we can't reference parts of the documentation from README.
+   I'd like to make a link to &quot;Handwritten documentation&quot; chapter
+   but there is no HTML anchor there.</p>
+
+  </p>
+  </div>
+<h3>Package: EXAMPLE/CLASS</h3>
+<h4>Classes</h4>
+<div>
+  <h5 id="example-class:admin-3">
+  admin
+  </h5>
+  <p>
+  <p>Admins should have additional priveleges.</p>
+
+  </p>
+  </div>
+<div>
+  <h5 id="example-class:user-4">
+  user
+  </h5>
+  <p>
+  <p>All users in the system have this class.</p>
+
+<p>Last login slot is updated automatically.</p>
+
+  </p>
+  </div>
+<h4>Generic-function-node</h4>
+<div>
+  <h5 id="example-class::is-admin-5">
+  is-admin <span class="lambda-parameters"><span class="parenthesis">(</span> user <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  <p>Returns t if user can modify the system.</p>
+
+  </p>
+  </div>
+<h4>Methods</h4>
+<div>
+  <h5 id="example-class::is-admin-6">
+  is-admin <span class="lambda-parameters"><span class="parenthesis">(</span> <span class="lambda-parameters"><span class="parenthesis"><span class="parenthesis">(</span> </span> user admin <span class="parenthesis"> <span class="parenthesis">)</span></span></span> <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  
+  </p>
+  </div>
+<div>
+  <h5 id="example-class::is-admin-7">
+  is-admin <span class="lambda-parameters"><span class="parenthesis">(</span> <span class="lambda-parameters"><span class="parenthesis"><span class="parenthesis">(</span> </span> user user <span class="parenthesis"> <span class="parenthesis">)</span></span></span> <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  
+  </p>
+  </div>
+<h3>Package: EXAMPLE/APP</h3>
+<h4>Macros</h4>
+<div>
+  <h5 id="example-app:defrule-8">
+  defrule <span class="lambda-parameters"><span class="parenthesis">(</span> name <span class="symbol">&body</span> body <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  <p>This is a fake macro just to see if documentation system will be able
+   to extract docstrings for NUMBER-ONE.</p>
+
+  </p>
+  </div>
+<h4>Variables</h4>
+<div>
+  <h5 id="example-app:number-one-9">
+  number-one
+  </h5>
+  <p>
+  
+  </p>
+  </div>
+<h4>Functions</h4>
+<div>
+  <h5 id="example-app:foo-10">
+  foo <span class="lambda-parameters"><span class="parenthesis">(</span> first <span class="symbol">&key</span> <span class="lambda-parameters"><span class="parenthesis"><span class="parenthesis">(</span> </span> other 100500 <span class="parenthesis"> <span class="parenthesis">)</span></span></span> <span class="parenthesis">)</span></span>
+  </h5>
+  <p>
+  <p>This is example function.</p>
+
+<p>Internally it calls <a href="#example-utils:do-the-job-2" >DO-THE-JOB</a>
+   to do the real job.</p>
+
+<p>Note, I'm using Markdown in this doctring. This is default
+   and docstrings markup can be changed by a parameter.</p>
+
+  </p>
+  </div>
+
+  </div>
+  </div>
+  </main>
+  </div>
+  </body>
+</html>
