@@ -5,6 +5,7 @@ on:
     branches:
       - 'main'
       - 'master'
+  pull_request:
   schedule:
     # rebuild docs at 10 AM every Monday
     - cron:  '0 10 * * 1'
